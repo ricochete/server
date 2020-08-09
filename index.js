@@ -32,7 +32,9 @@ async function serveMux(req, res) {
 
             /* Container execution error */
             if (result.stdErr) 
-                throw new Error("The container returned a standard error while executing. \n" + String(result.stdErr))        
+                throw new Error("The container returned a standard error while executing. \n" + String(result.stdErr))
+             
+            result.container.remove()
             return result.stdOut
         }
         else {
